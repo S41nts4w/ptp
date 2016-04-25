@@ -59,12 +59,7 @@ public class Rennauto {
 	 * Ausgabe eines Rennautos mit dessen FahrerIn über die Methode toString
 	 */
 	public void ausgeben() {
-		/*
-		 * System.out.format("Name der FahrerIn: " + this.nameFahrerIn +
-		 * "\nFahrzeugtyp: " + fahrzeugtyp + "\nMaximalgeschwindigkeit : " +
-		 * maxSpeed + " km/h" + "\nBisher zurückgelegte Strecke: %.2f Kilometer"
-		 * , streckeBisher);
-		 */ System.out.println(toString());
+	 System.out.println(toString());
 	}
 
 	/**
