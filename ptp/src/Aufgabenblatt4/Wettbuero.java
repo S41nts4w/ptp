@@ -5,40 +5,56 @@ public class Wettbuero {
 	private double faktor;
 	private double gewinn;
 	Rennen rennen;
-	Wette[] wettListe;
+	Wette[] wettliste;
 
+	/**
+	 * Konstruktor mit zwei Parametern
+	 * 
+	 * @param rennen
+	 * @param faktor
+	 */
 
-	// Konstruktor
-	public Wettbuero(Rennen autorennen, double faktor) {
+	public Wettbuero(Rennen rennen, double faktor) {
+		this.rennen = rennen;
 		this.faktor = faktor;
-		rennen = autorennen;
-		wettListe = new Wette[1];
-		anzahlWetten = 0;
+		wettliste = new Wette[1];
 	}
 
-	// public void wetteAnnehmen(String fahrerIn, int wettEinsatz, String
-	// Spieler){
-
-	public void addWette(Wette wette) {
-		wettListe[anzahlWetten]=wette;
+	/**
+	 * Methode zur Annahme einer Wette. Zusätzlich wird die Wettliste bei bedarf
+	 * vergrößert
+	 * 
+	 * @param wette
+	 */
+	public void wetteAnnehmen(Wette wette) {
+		wettliste[anzahlWetten] = wette;
 		anzahlWetten++;
-		if(anzahlWetten==wettListe.length){
-			Wette [] hilfsListeWette = new Wette[wettListe.length*2];
-			System.arraycopy(wettListe, 0, hilfsListeWette, 0, wettListe.length);
-			wettListe = hilfsListeWette;
+
+		if (anzahlWetten == wettliste.length) {
+			Wette[] hilfsListewette = new Wette[wettliste.length * 2];
+			System.arraycopy(wettliste, 0, hilfsListewette, 0, wettliste.length);
+			wettliste = hilfsListewette;
 		}
+
 	}
-	
 
-	
+	/**
+	 * Die Auswertung der Wettliste mit dem Rennen. Es wird überprüft ob einer
+	 * der Spieler auf den richtigen Fahrer gesetzt hat und eine
+	 * dementsprechende Ausgabe getätigt.
+	 */
 	public void auswerten() {
+		boolean keinGewinner = true;
 		for (int i = 0; i < anzahlWetten; i++) {
-			if (rennen.ermittleSieger().getNameFahrerIn() == wettListe[i].getFahrerIn()) {
-				gewinn = faktor * wettListe[i].getWettEinsatz();
-				System.out.format("\nDer Spieler: %s hatt richtig getippt und %.2f Euronen gewonnen",
-						wettListe[i].getSpieler(), gewinn);
+			if (rennen.ermittleSieger().getNameFahrerIn() == wettliste[i].getFahrerIn()) {
+				gewinn = faktor * wettliste[i].getWettEinsatz();
+				System.out.format("%s hat richtig getippt und %.2f Euro gewonnen.\n", wettliste[i].getSpieler(),
+						gewinn);
+				keinGewinner = false;
 			}
-
+		}
+		if (keinGewinner) {
+			System.out.println("Leider hat niemand richtig getippt.");
 		}
 
 	}
