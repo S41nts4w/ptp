@@ -9,58 +9,73 @@
  * Aufgabe 4.1: Rennauto
  * Schwerpunkte: Klasse mit Zustand
  * Aufgabe: Schreiben Sie eine Klasse Rennauto. Jedes Rennauto hat folgende Eigenschaften:
- * ï  Name der Fahrerin
- * ï  Fahrzeugtyp
- * ï  Maximalgeschwindigkeit (Veraenderung der gefahrenen Strecke pro Zeitschritt)
- * ï  bisher gefahrene Strecke ab dem Start
+ * ‚Ä¢  Name der Fahrerin
+ * ‚Ä¢  Fahrzeugtyp
+ * ‚Ä¢  Maximalgeschwindigkeit (Veraenderung der gefahrenen Strecke pro Zeitschritt)
+ * ‚Ä¢  bisher gefahrene Strecke ab dem Start
  * Schreiben Sie einen Konstruktor, der die Objektvariablen initialisiert (Name, Typ und
- * Maximalgeschwindigkeit sind Parameter). Das  Rennauto  hat auﬂerdem eine Methode  fahren() . Beim
+ * Maximalgeschwindigkeit sind Parameter). Das  Rennauto  hat au√üerdem eine Methode  fahren() . Beim
  * Aufruf der Methode bewegt sich das  Rennauto zunaechst einen Schritt (Zeitschritt = 1) mit
  * Maximalgeschwindigkeit weiter. Eine Fahrerin schafft es aber nicht immer, die Maximalgeschwindigkeit
  * auszureizen. Daher wird die tatsaechlich gefahrene Distanz in einem Zeitschritt mit einem Zufallsfaktor
- * skaliert ( Math.random() liefert eine Zufallszahl aus [0,1]). Die Klasse benoetigt auﬂerdem eine Methode
+ * skaliert ( Math.random() liefert eine Zufallszahl aus [0,1]). Die Klasse benoetigt au√üerdem eine Methode
  * ausgeben() , die den aktuellen Zustand der Klasse auf der Konsole ausgibt. Testen Sie Ihre
  * Implementierung, z.B. indem Sie eine Instanz von  Rennauto erstellen, einige Schritte fahren und jeweils den
  * Zustand des Objektes ausgeben.
  */
 
-package Aufgabenblatt4;
+package arbeitsblatt4;
 
 public class Rennauto {
 	private String nameFahrerIn;
 	private String fahrzeugtyp;
-	// Ver‰nderung der gefahrenen Strecke pro Zeitschritt
+
+	// Ver√§nderung der gefahrenen Strecke pro Zeitschritt
 	private double maxSpeed;
 	private double streckeBisher = 0;
 
-	// Konstruktoren mit 3 Parametern
+	/**
+	 * Konstruktoren mit 3 Parametern
+	 * 
+	 * @param nameFahrerIn
+	 * @param fahrzeugtyp
+	 * @param maxSpeed
+	 */
 	Rennauto(String nameFahrerIn, String fahrzeugtyp, int maxSpeed) {
 		this.nameFahrerIn = nameFahrerIn;
 		this.fahrzeugtyp = fahrzeugtyp;
 		this.maxSpeed = maxSpeed;
 	}
 
-	// Methode gefahrene Strecke berechenen mit Zufallsfaktor
+	/**
+	 * Methode zur Berechnung der gefahrenen Strecke mit einem Zufallsfaktor
+	 */
+
 	public void fahren() {
 		streckeBisher += maxSpeed * Math.random();
 	}
 
-	//
+	/**
+	 * Ausgabe eines Rennautos mit dessen FahrerIn √ºber die Methode toString
+	 */
 	public void ausgeben() {
 		/*
 		 * System.out.format("Name der FahrerIn: " + this.nameFahrerIn +
 		 * "\nFahrzeugtyp: " + fahrzeugtyp + "\nMaximalgeschwindigkeit : " +
-		 * maxSpeed + " km/h" + "\nBisher zur¸ckgelegte Strecke: %.2f Kilometer"
-		 * , streckeBisher);*/
-		 System.out.println(toString());
+		 * maxSpeed + " km/h" + "\nBisher zur√ºckgelegte Strecke: %.2f Kilometer"
+		 * , streckeBisher);
+		 */ System.out.println(toString());
 	}
 
+	/**
+	 * Methode die einen String mit einem Auto, der FahrerIn und der maximalen
+	 * Geschwindigkeit zur√ºck gibt
+	 */
 	public String toString() {
-		return String.format("Name der FahrerIn: " + nameFahrerIn 
-				+ "\nFahrzeugtyp: " + fahrzeugtyp 
-				+ "\nMaximalgeschwindigkeit : " + maxSpeed + " km/h"
-				+ "\nBisher zur¸ckgelegte Strecke: %.2f Kilometer", streckeBisher);
-}
+		return String.format("Name der FahrerIn: " + nameFahrerIn + "\nFahrzeugtyp: " + fahrzeugtyp
+				+ "\nMaximalgeschwindigkeit : " + maxSpeed + " km/h" + "\nZur√ºckgelegte Strecke: %.2f Kilometer",
+				streckeBisher);
+	}
 
 	public static void main(String args[]) {
 		/*
