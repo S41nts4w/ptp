@@ -1,6 +1,19 @@
+/**
+ * Praktikum TIPTP1, SS 2016
+ * Gruppe: Daniel von Drathen,
+ * Derya Uyargil
+ * Aufgabe: Aufgabenblatt 5, Aufgabe 2
+ */
+
+/**
+ * Klasse für ein Wagenobjekt.
+ * 
+ */
+
 package aufgabenblatt5Eisenbahn;
 
 public class Wagen {
+	
 	private final int laenge;
 	private final int kapazitaet;
 	private Wagen naechsterWagen;
